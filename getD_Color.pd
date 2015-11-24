@@ -1,4 +1,4 @@
-#N canvas 116 111 862 641 10;
+#N canvas 108 115 862 641 10;
 #X obj 146 325 pix_data;
 #X obj 168 356 unpack f f f;
 #X obj 202 393 * 256;
@@ -22,9 +22,9 @@
 #X obj 119 174 t a b;
 #X obj 253 295 expr 1 - $f1;
 #X obj 146 203 t b b b;
-#N canvas 671 281 451 421 scale-math 0;
+#N canvas 667 283 450 483 scale-math 1;
 #X obj 99 24 inlet;
-#X obj 94 397 outlet;
+#X obj 87 465 outlet;
 #X obj 94 178 min 10000;
 #X obj 140 148 r maxThr;
 #X obj 121 199 r minThr;
@@ -39,18 +39,19 @@
 #X obj 250 117 t f f;
 #X obj 354 282 sel 0;
 #X obj 253 143 == 0;
-#X obj 248 187 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X floatatom 27 355 5 0 0 0 - - -, f 5;
 #X obj 94 304 maxlib/scale 0 10 0 1 0;
+#X obj 92 438 LabIO_demux-2;
+#X obj 133 413 *;
+#X obj 95 390 t f f;
+#X obj 211 399 r NaturalDistance;
 #X connect 0 0 9 0;
 #X connect 2 0 5 0;
 #X connect 3 0 2 1;
 #X connect 4 0 5 1;
-#X connect 5 0 18 0;
-#X connect 6 0 18 1;
-#X connect 7 0 18 2;
-#X connect 8 0 1 0;
+#X connect 5 0 16 0;
+#X connect 6 0 16 1;
+#X connect 7 0 16 2;
+#X connect 8 0 19 0;
 #X connect 9 0 12 0;
 #X connect 9 1 10 0;
 #X connect 10 0 13 0;
@@ -60,12 +61,16 @@
 #X connect 13 1 14 0;
 #X connect 14 1 8 0;
 #X connect 15 0 12 1;
-#X connect 15 0 16 0;
-#X connect 18 0 8 0;
-#X connect 18 0 17 0;
+#X connect 16 0 8 0;
+#X connect 17 0 1 0;
+#X connect 18 0 17 1;
+#X connect 19 0 17 0;
+#X connect 19 1 18 0;
+#X connect 19 1 18 1;
+#X connect 20 0 17 2;
 #X restore 105 491 pd scale-math;
 #X obj 139 132 spigot;
-#X obj 172 111 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 172 111 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 304 13 r ligaGet-\$1;
 #X obj 345 194 sel 0;
@@ -74,13 +79,13 @@
 #X msg 362 311 0;
 #X obj 524 38 r RGBimg;
 #X obj 543 404 rgb2hsv;
-#X obj 633 545 tabwrite HUE;
+#X obj 631 596 tabwrite HUE;
 #X obj 631 498 unpack f f f;
-#X obj 643 569 tabwrite SATURATION;
-#X obj 651 596 tabwrite VALUE;
+#X obj 665 569 tabwrite SATURATION;
+#X obj 693 547 tabwrite VALUE;
 #X obj 543 457 t l b;
 #X obj 559 121 spigot;
-#X obj 592 100 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 592 100 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 592 44 r play_mode;
 #X obj 592 68 != 3;
@@ -92,9 +97,9 @@
 #X obj 559 154 t a b;
 #X obj 693 275 expr 1 - $f1;
 #X obj 586 183 t b b b;
-#X obj 722 502 r bdata;
-#X obj 722 524 \$1;
-#N canvas 671 94 690 652 corClass 0;
+#X obj 726 496 r bdata;
+#X obj 726 518 \$1;
+#N canvas 669 95 690 652 corClass 0;
 #X obj 193 6 inlet;
 #X obj 192 32 unpack f f f;
 #X obj 467 378 spigot;
@@ -176,7 +181,7 @@
 #X connect 33 0 10 0;
 #X connect 35 0 10 0;
 #X connect 36 0 10 0;
-#X restore 543 571 pd corClass;
+#X restore 511 540 pd corClass;
 #X obj 304 50 t f f f;
 #X obj 202 498 r bdata;
 #X obj 337 499 t f f;
@@ -185,7 +190,7 @@
 -1 -1 0;
 #X obj 698 339 r colorSpace;
 #X obj 600 405 rgb2HCL-lut;
-#X obj 543 596 s ColorType_pixN;
+#X obj 511 565 s ColorType_pixN;
 #X connect 0 1 1 0;
 #X connect 1 0 3 0;
 #X connect 1 1 2 0;

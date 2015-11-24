@@ -1,4 +1,4 @@
-#N canvas 92 382 557 385 10;
+#N canvas 47 335 554 385 10;
 #X obj 13 9 cnv 15 220 160 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #N canvas 614 271 394 209 instructions 0;
@@ -13,9 +13,9 @@ images from kinect \, for Synesthesia Unit of Sussex University;
 #X obj 242 9 cnv 15 300 160 empty empty empty 20 12 0 14 -4034 -66577
 0;
 #X obj 253 22 hsl 200 30 100 5000 0 0 general_tempo general_tempo-r
-general_tempo(ms) 50 16 0 10 -262144 -1 -99865 2624 1;
+general_tempo(ms) 50 16 0 10 -262144 -1 -99865 6424 1;
 #X obj 19 219 hsl 128 25 0.1 10 0 0 maxThr empty empty -2 -8 0 10 -262144
--1 -1 2800 1;
+-1 -1 12700 1;
 #X obj 16 194 nbx 5 20 0.1 1e+37 0 0 empty MaxThr-r Max_Threshold 0
 -10 0 16 -262144 -1 -1 10 256;
 #X obj 19 317 hsl 128 25 0 10 0 0 minThr empty empty -2 -8 0 10 -262144
@@ -29,8 +29,8 @@ general_tempo(ms) 50 16 0 10 -262144 -1 -99865 2624 1;
 #X text 268 135 3 - Tempo relative to central pixel depth.;
 #X text 268 120 2 - Play all at regular tempo.;
 #X obj 275 210 vsl 50 150 0 5 0 0 volume volume-set Vol 0 -9 0 10 -262144
--1 -1 8300 1;
-#N canvas 190 88 380 282 stuff 0;
+-1 -1 5300 1;
+#N canvas 184 91 380 282 stuff 0;
 #N canvas 407 154 844 360 properties 0;
 #X obj 13 66 cnv 15 140 220 empty empty empty 20 12 0 14 -204800 -66577
 0;
@@ -141,7 +141,7 @@ down!!;
 #X connect 62 0 60 0;
 #X connect 63 0 5 0;
 #X restore 33 188 pd properties;
-#N canvas 52 166 492 495 showDmouse 0;
+#N canvas 50 167 492 495 showDmouse 0;
 #X obj 17 44 gemhead;
 #X obj 20 310 translateXYZ 0 0 0.0001;
 #X obj 268 273 pix_data;
@@ -225,6 +225,7 @@ down!!;
 #X connect 38 0 35 0;
 #X restore 118 46 pd showDmouse;
 #N canvas 1 496 1351 271 get7x13D 0;
+#X obj 924 27 getD_Color 9 9 0;
 #X obj 403 27 getD_Color 4 4 0;
 #X obj 609 27 getD_Color 6 6 0;
 #X obj 302 27 getD_Color 3 3 0;
@@ -271,7 +272,6 @@ down!!;
 #X obj 713 191 getD_Color 85 7 6;
 #X obj 817 81 getD_Color 34 8 2;
 #X obj 818 191 getD_Color 86 8 6;
-#X obj 924 27 getD_Color 9 9 0;
 #X obj 924 81 getD_Color 35 9 2;
 #X obj 924 108 getD_Color 48 9 3;
 #X obj 925 137 getD_Color 61 9 4;
@@ -320,7 +320,7 @@ down!!;
 #X obj 34 67 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 34 90 s bdata;
-#N canvas 1 254 449 436 Dimg4test 0;
+#N canvas 1 255 449 436 Dimg4test 0;
 #X obj 62 320 s Dimg;
 #X obj 315 31 gemhead 51;
 #X obj 318 121 colorRGB;
@@ -389,7 +389,7 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X connect 29 0 27 0;
 #X connect 29 0 15 0;
 #X restore 34 17 pd Dimg4test;
-#N canvas 613 161 374 528 createDisplay 0;
+#N canvas 607 164 374 528 createDisplay 0;
 #X obj 54 389 pix_texture;
 #X msg 67 324 quality \$1;
 #X obj 67 305 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0 1
@@ -457,13 +457,13 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X obj 849 164 f -1;
 #X obj 841 275 t f f f;
 #X obj 584 31 t b b b;
-#X obj 529 119 until;
-#X msg 532 80 91;
+#X obj 589 137 until;
+#X msg 592 98 91;
 #X obj 550 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 69 435 tabdump drawImage;
 #X obj 73 481 outlet;
-#X obj 478 43 inlet;
+#X obj 584 5 inlet;
 #X obj 356 289 tabread valGreen;
 #X obj 466 291 tabread valBlue;
 #X msg 858 384 0 0 1;
@@ -623,7 +623,7 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X restore 119 74 pd mode4;
 #X obj 128 164 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#N canvas 1 361 755 286 videoFormat 0;
+#N canvas 440 441 755 286 videoFormat 0;
 #X obj 53 149 pix_resize 13 7;
 #X obj 188 187 pix_duotone;
 #X floatatom 198 110 5 0 0 0 - - -, f 5;
@@ -634,10 +634,10 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X obj 29 92 demux 0 1 2 3 4;
 #X obj 132 74 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
 -1 1;
-#X obj 26 37 r Dimg;
+#X obj 29 13 r Dimg;
 #X obj 226 21 r B;
 #X msg 226 42 1;
-#X obj 31 240 s img;
+#X obj 28 240 s img;
 #X msg 345 165 quality \$1;
 #X obj 367 139 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -656,7 +656,7 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X obj 682 194 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 610 47 visualiza color image;
-#X obj 680 157 inlet colorDebug;
+#X obj 682 165 inlet colorDebug;
 #X obj 409 48 inlet depthDebug;
 #X obj 603 139 pix_resize 13 7;
 #X msg 621 74 dimen 800 600;
@@ -702,7 +702,7 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X obj 33 213 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
 -1 1;
 #X text 145 162 visualize image;
-#N canvas 1 61 450 300 kinect 0;
+#N canvas 579 77 450 300 kinect 0;
 #X text 160 53 gemhead for rgb;
 #X text 280 52 and for depth;
 #X text 167 134 rgb;
@@ -745,15 +745,37 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X connect 20 0 15 0;
 #X connect 20 0 16 0;
 #X restore 33 163 pd kinect;
-#N canvas 567 106 796 424 init 0;
+#N canvas 563 108 796 424 init 0;
 #X obj 131 15 table coorX;
 #X obj 217 15 table coorY;
 #X obj 304 15 table valD;
 #X obj 55 15 loadbang;
 #X obj 26 15 s B;
-#X obj 12 302 table HUE 91;
-#X obj 97 302 table SATURATION 91;
-#X obj 223 302 table VALUE 91;
+#X obj 12 322 table HUE 91;
+#X obj 97 322 table SATURATION 91;
+#X obj 223 322 table VALUE 91;
+#X obj 13 352 table valRed 91;
+#X obj 115 351 table valGreen 91;
+#X obj 232 350 table valBlue 91;
+#X obj 389 15 table ColorTypeAll 91;
+#X obj 9 375 table drawImage 364;
+#X obj 560 355 table testHvalues 1.65814e+07;
+#X obj 560 331 table testCvalues 1.65814e+07;
+#X obj 560 308 table testLvalues 1.65814e+07;
+#X msg 564 240 \; testLvalues read textLvalues.txt \; testCvalues read
+textCvalues.txt \; testHvalues read textHvalues.txt;
+#X msg 708 123 255 255 255;
+#X obj 582 211 r B;
+#X obj 585 44 hsv2rgb;
+#X text 654 39 H;
+#X obj 630 162 rgb2HCL-lut;
+#X obj 639 200 print HCL;
+#X obj 722 186 print rgb;
+#X msg 562 20 0.8 1 1;
+#X msg 714 84 0.8 0 1;
+#X msg 557 118 set \$1 \$2 \$3;
+#X obj 549 85 t b l;
+#X msg 547 160 0.8 0 1;
 #X msg 12 44 \; qual 0 \; showDmouse-r 0 \; sz 15 \; coorX resize 13
 \; coorX 0 0.038 0.115 0.192 0.269 0.346 0.423 0.5 0.577 0.654 0.731
 0.807 0.884 0.961 \; coorX bounds 0 0 12 1 \; coorY resize 7 \; coorY
@@ -761,39 +783,17 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 25 30 35 40 45 50 55 60 65 70 75 80 85 90 \; valD ylabel -1 0.5 1 1.5
 2 3 4 5 \; valD bounds 0 9 91 0 \; bdata bang \; MaxThr-r 10 \; MinThr-r
-0.01 \; general_tempo-r 500 \;, f 86;
-#X obj 13 332 table valRed 91;
-#X obj 115 331 table valGreen 91;
-#X obj 232 330 table valBlue 91;
-#X obj 389 15 table ColorTypeAll 91;
-#X obj 9 375 table drawImage 364;
-#X obj 560 325 table testHvalues 1.65814e+07;
-#X obj 560 301 table testCvalues 1.65814e+07;
-#X obj 560 278 table testLvalues 1.65814e+07;
-#X msg 564 210 \; testLvalues read textLvalues.txt \; testCvalues read
-textCvalues.txt \; testHvalues read textHvalues.txt;
-#X msg 708 93 255 255 255;
-#X obj 582 181 r B;
-#X obj 585 14 hsv2rgb;
-#X text 654 9 H;
-#X obj 630 132 rgb2HCL-lut;
-#X obj 639 170 print HCL;
-#X obj 722 156 print rgb;
-#X msg 562 -10 0.8 1 1;
-#X msg 714 54 0.8 0 1;
-#X msg 557 88 set \$1 \$2 \$3;
-#X obj 549 55 t b l;
-#X msg 547 130 0.8 0 1;
+0.01 \; general_tempo-r 500 \; NaturalDistance 1 \;, f 86;
 #X connect 3 0 4 0;
-#X connect 3 0 8 0;
-#X connect 18 0 22 0;
-#X connect 19 0 17 0;
-#X connect 20 0 24 0;
-#X connect 20 0 28 0;
-#X connect 22 0 23 0;
-#X connect 25 0 20 0;
-#X connect 26 0 22 0;
-#X connect 28 1 27 0;
+#X connect 3 0 29 0;
+#X connect 17 0 21 0;
+#X connect 18 0 16 0;
+#X connect 19 0 23 0;
+#X connect 19 0 27 0;
+#X connect 21 0 22 0;
+#X connect 24 0 19 0;
+#X connect 25 0 21 0;
+#X connect 27 1 26 0;
 #X restore 212 48 pd init;
 #N canvas 152 411 450 300 gemwin 0;
 #X obj 109 219 gemwin;
@@ -1083,47 +1083,50 @@ textCvalues.txt \; testHvalues read textHvalues.txt;
 0 10 -262144 -99865 -1 0 256;
 #X text 159 189 kinect angle;
 #X obj 472 23 nbx 5 14 -1e+37 1e+37 0 0 empty general_tempoView empty
-0 -8 0 10 -262144 -128992 -262144 746.111 256;
+0 -8 0 10 -262144 -128992 -262144 1681.79 256;
 #X obj 253 67 hsl 200 30 0 1 0 0 Offset-01 Offset-01-r offset(%) 70
 16 0 10 -262144 -1 -99865 0 1;
 #X obj 472 69 nbx 5 14 -1e+37 1e+37 0 0 empty offsetView empty 0 -8
 0 10 -262144 -99865 -1 0 256;
 #X obj 16 251 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -99865 -1 2.28268 256;
+-262144 -99865 -1 10 256;
 #X obj 16 349 nbx 5 14 -1e+37 1e+37 0 0 empty offsetView empty 0 -8
 0 10 -262144 -99865 -1 0 256;
 #X text 187 208 horiz;
-#N canvas 61 128 484 306 ColorOffsets 1;
+#N canvas 11 72 484 306 ColorOffsets 1;
 #X obj 16 21 vsl 40 250 0 1 0 0 Offset-1 Offset-1-r empty 0 -9 0 10
 -1 -262144 -1 0 1;
 #X obj 69 21 vsl 40 250 0 1 0 0 Offset-2 Offset-2-r empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 3112 1;
 #X obj 123 21 vsl 40 250 0 1 0 0 Offset-3 Offset-3-r empty 0 -9 0 10
--128992 -1 -1 0 1;
+-128992 -1 -1 6225 1;
 #X obj 177 21 vsl 40 250 0 1 0 0 Offset-4 Offset-4-r empty 0 -9 0 10
--258113 -1 -1 0 1;
+-258113 -1 -1 9337 1;
 #X obj 230 21 vsl 40 250 0 1 0 0 Offset-5 Offset-5-r empty 0 -9 0 10
--257985 -1 -1 0 1;
+-257985 -1 -1 12450 1;
 #X obj 284 21 vsl 40 250 0 1 0 0 Offset-6 Offset-6-r empty 0 -9 0 10
--4034 -1 -1 0 1;
+-4034 -1 -1 15562 1;
 #X obj 337 21 vsl 40 250 0 1 0 0 Offset-7 Offset-7-r empty 0 -9 0 10
--4160 -262144 -1 0 1;
+-4160 -262144 -1 18675 1;
 #X obj 399 20 bng 60 250 50 0 offset0 empty set_to_0 5 28 0 10 -262144
 -1 -1;
 #X obj 399 115 bng 60 250 50 0 stair_offset empty stair 15 28 0 10
 -262144 -1 -1;
-#N canvas 953 168 284 300 set_offset 1;
-#X msg 42 152 \; Offset-1-r 0 \; Offset-2-r 0 \; Offset-3-r 0 \; Offset-4-r
+#N canvas 951 197 284 300 set_offset 0;
+#X msg 42 102 \; Offset-1-r 0 \; Offset-2-r 0 \; Offset-3-r 0 \; Offset-4-r
 0 \; Offset-5-r 0 \; Offset-6-r 0 \; Offset-7-r 0 \;;
 #X obj 42 34 r offset0;
-#X msg 150 151 \; Offset-1-r 0 \; Offset-2-r 0.125 \; Offset-3-r 0.25
+#X msg 150 101 \; Offset-1-r 0 \; Offset-2-r 0.125 \; Offset-3-r 0.25
 \; Offset-4-r 0.375 \; Offset-5-r 0.5 \; Offset-6-r 0.625 \; Offset-7-r
 0.75 \;;
 #X obj 150 35 r stair_offset;
 #X connect 1 0 0 0;
 #X connect 3 0 2 0;
 #X restore 388 254 pd set_offset;
-#X restore 427 241 pd ColorOffsets;
+#X restore 417 240 pd ColorOffsets;
+#X obj 409 346 tgl 15 0 NaturalDistance empty empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X text 428 347 Distance Lin/Nat;
 #X connect 4 0 25 0;
 #X connect 5 0 4 0;
 #X connect 6 0 26 0;
