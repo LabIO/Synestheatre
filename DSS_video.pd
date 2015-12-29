@@ -1,19 +1,28 @@
-#N canvas 47 335 554 385 10;
+#N canvas 44 93 624 410 10;
 #X obj 13 9 cnv 15 220 160 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#N canvas 614 271 394 209 instructions 0;
-#X text 15 97 Play Modes \; 1 play each pixel at his own tempo relative
+#N canvas 731 270 399 337 instructions 0;
+#X text 15 90 Play Modes \; 1 play each pixel at his own tempo relative
 to Depth \; 2 play all at regular tempo \; 3 play all at once \, relative
 to central pixel depth \; 4 pingpong mode;
 #X text 15 13 This is a prototype to sonificate distance and color
 images from kinect \, for Synesthesia Unit of Sussex University;
 #X text 15 50 Color Classes: 0 - Off 1 - Black 2 - White 3 - Gray 4
 - Red 5 - Yellow 6 - Green 7 - Blue;
+#X text 15 167 Set Max_Threshold to set the maximum depth captured
+\; Set Min for the min depth (default 400mm works fine) \; Set general
+tempo for mode 2 and 4 \; Set offset(%) to change onset time offset
+for color class \; Set Reverber to liking (actually independent from
+depth) \;;
+#X text 15 242 In [pd Stuff] "visualize" toggles On Off display \;
+"depthDebug" for the depth image \; "colorDebug" for the color image
+\; both can be seen in 13*7 grid or 800*600 \;;
+#X text 17 303 comment;
 #X restore 26 100 pd instructions;
 #X obj 242 9 cnv 15 300 160 empty empty empty 20 12 0 14 -4034 -66577
 0;
 #X obj 253 22 hsl 200 30 100 5000 0 0 general_tempo general_tempo-r
-general_tempo(ms) 50 16 0 10 -262144 -1 -99865 6424 1;
+general_tempo(ms) 50 16 0 10 -262144 -1 -99865 1624 1;
 #X obj 19 219 hsl 128 25 0.1 10 0 0 maxThr empty empty -2 -8 0 10 -262144
 -1 -1 12700 1;
 #X obj 16 194 nbx 5 20 0.1 1e+37 0 0 empty MaxThr-r Max_Threshold 0
@@ -28,119 +37,9 @@ general_tempo(ms) 50 16 0 10 -262144 -1 -99865 6424 1;
 #X text 267 149 4 - Pingpong;
 #X text 268 135 3 - Tempo relative to central pixel depth.;
 #X text 268 120 2 - Play all at regular tempo.;
-#X obj 275 210 vsl 50 150 0 5 0 0 volume volume-set Vol 0 -9 0 10 -262144
--1 -1 5300 1;
-#N canvas 184 91 380 282 stuff 0;
-#N canvas 407 154 844 360 properties 0;
-#X obj 13 66 cnv 15 140 220 empty empty empty 20 12 0 14 -204800 -66577
-0;
-#X msg 18 250 led \$1;
-#X obj 18 131 vradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144 -1
--1 3;
-#X floatatom 18 227 5 0 0 0 - - -, f 5;
-#X msg 95 250 angle \$1;
-#X obj 95 95 vsl 15 128 -30 30 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 275 215 vsl 50 150 0 5 0 0 volume volume-set Vol 0 -9 0 10 -262144
 -1 -1 0 1;
-#X floatatom 95 231 5 0 0 0 - - -, f 5;
-#X msg 59 29 0;
-#X text 34 145 GREEN;
-#X text 35 129 OFF;
-#X text 34 161 RED;
-#X text 34 176 YELLOW;
-#X text 34 191 BLINK_GR;
-#X text 34 205 BLINK_R_Y;
-#X obj 168 48 cnv 15 320 120 empty empty empty 20 12 0 14 -4034 -66577
-0;
-#X obj 179 85 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
-#X floatatom 179 120 5 0 0 0 - - -, f 5;
-#X obj 244 86 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
-#X floatatom 244 121 5 0 0 0 - - -, f 5;
-#X msg 179 141 rgb \$1;
-#X msg 244 142 depth \$1;
-#X text 171 48 activate/deactivate streams;
-#X text 173 62 save cpu power by just activating necessary streams!
-;
-#X obj 496 49 cnv 15 315 120 empty empty empty 20 12 0 14 -232576 -66577
-0;
-#X obj 499 88 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
-#X floatatom 499 123 5 0 0 0 - - -, f 5;
-#X msg 499 143 depth_output \$1;
-#X text 646 111 b = 0 \, a = 0;
-#X text 21 4 properties for pix_freenect;
-#X text 517 26 DEPTH OUTPUT;
-#X text 190 27 STREAMS;
-#X text 36 47 LED \, ANGLE;
-#X text 645 98 r->3 msbits \, g ->8 lsbits;
-#X text 518 101 Raw YUV (2 bytes) |;
-#X text 518 86 Raw RGBA -> 11 bit output in r&g channel;
-#X obj 168 192 cnv 15 520 120 empty empty empty 20 12 0 14 -261682
--66577 0;
-#X obj 180 215 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
-#X floatatom 180 264 5 0 0 0 - - -, f 5;
-#X obj 368 226 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X floatatom 368 261 5 0 0 0 - - -, f 5;
-#X msg 180 285 depth_mode \$1;
-#X text 201 243 11bit raw;
-#X text 503 52 set depth output colorspace;
-#X text 171 195 set output formats;
-#X text 201 227 mm aligned to rgb (16 bit);
-#X text 201 213 mm unaligned (16 bit);
-#X msg 368 282 video_mode \$1;
-#X text 388 224 RGB;
-#X text 387 240 IR;
-#X obj 18 276 s \$0-prop;
-#X obj 179 166 s \$0-prop;
-#X obj 499 169 s \$0-prop;
-#X obj 180 314 s \$0-prop;
-#X obj 484 220 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
-#X floatatom 484 268 5 0 0 0 - - -, f 5;
-#X msg 484 287 resolution \$1;
-#X text 504 234 MEDIUM (default);
-#X text 481 197 RGB RESOLUTION;
-#X text 504 249 HIGH (restart rgb stream!);
-#X text 504 219 LOW (not displaying correctly);
-#X msg 142 313 1;
-#X text 444 313 HIGH Resolution IR works just if depth stream is shut
-down!!;
-#X obj 143 287 r B;
-#X obj 115 34 r kin_angle;
-#X obj 56 319 s angleVal;
-#X connect 1 0 49 0;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
-#X connect 4 0 49 0;
-#X connect 5 0 6 0;
-#X connect 6 0 4 0;
-#X connect 6 0 64 0;
-#X connect 7 0 5 0;
-#X connect 15 0 16 0;
-#X connect 16 0 19 0;
-#X connect 17 0 18 0;
-#X connect 18 0 20 0;
-#X connect 19 0 50 0;
-#X connect 20 0 50 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 26 0 51 0;
-#X connect 36 0 37 0;
-#X connect 37 0 40 0;
-#X connect 38 0 39 0;
-#X connect 39 0 46 0;
-#X connect 40 0 52 0;
-#X connect 46 0 52 0;
-#X connect 53 0 54 0;
-#X connect 54 0 55 0;
-#X connect 55 0 52 0;
-#X connect 60 0 36 0;
-#X connect 62 0 60 0;
-#X connect 63 0 5 0;
-#X restore 33 188 pd properties;
+#N canvas 200 425 425 309 stuff 0;
 #N canvas 50 167 492 495 showDmouse 0;
 #X obj 17 44 gemhead;
 #X obj 20 310 translateXYZ 0 0 0.0001;
@@ -223,10 +122,12 @@ down!!;
 #X connect 36 0 33 0;
 #X connect 37 0 1 0;
 #X connect 38 0 35 0;
-#X restore 118 46 pd showDmouse;
+#X restore 109 46 pd showDmouse;
 #N canvas 1 496 1351 271 get7x13D 0;
-#X obj 924 27 getD_Color 9 9 0;
+#X obj 712 27 getD_Color 7 7 0;
+#X obj 303 81 getD_Color 29 3 2;
 #X obj 403 27 getD_Color 4 4 0;
+#X obj 924 27 getD_Color 9 9 0;
 #X obj 609 27 getD_Color 6 6 0;
 #X obj 302 27 getD_Color 3 3 0;
 #X obj 203 27 getD_Color 2 2 0;
@@ -236,7 +137,6 @@ down!!;
 #X obj 818 137 getD_Color 60 8 4;
 #X obj 109 108 getD_Color 40 1 3;
 #X obj 817 27 getD_Color 8 8 0;
-#X obj 712 27 getD_Color 7 7 0;
 #X obj 13 27 getD_Color 0 0 0;
 #X obj 109 27 getD_Color 1 1 0;
 #X obj 1025 27 getD_Color 10 10 0;
@@ -256,7 +156,6 @@ down!!;
 #X obj 203 81 getD_Color 28 2 2;
 #X obj 204 137 getD_Color 54 2 4;
 #X obj 204 191 getD_Color 80 2 6;
-#X obj 303 81 getD_Color 29 3 2;
 #X obj 303 137 getD_Color 55 3 4;
 #X obj 303 191 getD_Color 81 3 6;
 #X obj 403 81 getD_Color 30 4 2;
@@ -316,10 +215,10 @@ down!!;
 #X obj 817 108 getD_Color 47 8 3;
 #X obj 818 164 getD_Color 73 8 5;
 #X obj 505 54 getD_Color 18 5 1;
-#X restore 34 42 pd get7x13D;
-#X obj 34 67 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X restore 25 42 pd get7x13D;
+#X obj 25 67 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 34 90 s bdata;
+#X obj 25 90 s bdata;
 #N canvas 1 255 449 436 Dimg4test 0;
 #X obj 62 320 s Dimg;
 #X obj 315 31 gemhead 51;
@@ -388,163 +287,7 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X connect 28 0 29 0;
 #X connect 29 0 27 0;
 #X connect 29 0 15 0;
-#X restore 34 17 pd Dimg4test;
-#N canvas 607 164 374 528 createDisplay 0;
-#X obj 54 389 pix_texture;
-#X msg 67 324 quality \$1;
-#X obj 67 305 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 54 414 rectangle 5.33 4;
-#X obj 93 57 gemhead;
-#X obj 53 270 pix_set 13 7;
-#X obj 93 81 t a b;
-#X obj 103 179 r B;
-#X obj 152 282 r B;
-#X msg 153 309 0;
-#X obj 91 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
-;
-#X obj 91 6 inlet;
-#X text 134 9 create a depth image \; with D values;
-#N canvas 1 125 1094 642 drawImage 0;
-#X obj 260 288 tabread valRed;
-#X obj 572 292 tabread valD, f 14;
-#X obj 362 126 + 1;
-#X obj 360 158 mod 91;
-#X obj 361 104 f -1;
-#X obj 354 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 269 463 array set drawImage;
-#X obj 267 345 pack f f f f;
-#X obj 370 379 * 4;
-#X floatatom 226 162 5 0 0 0 - - -, f 5;
-#X msg 403 49 -1;
-#X obj 279 245 t f f f f f;
-#X msg 926 144 1 1 1;
-#X text 1023 145 white;
-#X text 1021 114 black;
-#X text 1026 172 gray;
-#X msg 926 115 0 0 0;
-#X text 1018 234 yellow;
-#X msg 926 202 1 0 0;
-#X text 1027 203 red;
-#X msg 926 231 1 1 0;
-#X msg 926 260 0 1 0;
-#X msg 926 289 0 0 1;
-#X text 1021 258 green;
-#X text 1032 287 blue;
-#X obj 706 89 tabdump ColorTypeAll;
-#X obj 682 186 sel 0 1 2 3 4 5 6 7;
-#X obj 727 53 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 825 445 unpack f f f;
-#X obj 752 487 tabwrite valRed;
-#X obj 856 487 tabwrite valGreen;
-#X obj 969 487 tabwrite valBlue;
-#X msg 630 422 0 0 0;
-#X msg 653 401 0 0 0;
-#X msg 678 376 1 1 1;
-#X msg 726 321 1 0 0;
-#X msg 750 294 1 1 0;
-#X msg 758 272 0 1 0;
-#X msg 773 236 0 0 1;
-#X obj 723 149 t a b;
-#X obj 850 186 + 1;
-#X msg 712 351 0.5 0.5 0.5;
-#X msg 926 173 0.5 0.5 0.5;
-#X obj 709 117 list-drip;
-#X obj 848 218 mod 91;
-#X msg 859 123 -1;
-#X obj 849 164 f -1;
-#X obj 841 275 t f f f;
-#X obj 584 31 t b b b;
-#X obj 589 137 until;
-#X msg 592 98 91;
-#X obj 550 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 69 435 tabdump drawImage;
-#X obj 73 481 outlet;
-#X obj 584 5 inlet;
-#X obj 356 289 tabread valGreen;
-#X obj 466 291 tabread valBlue;
-#X msg 858 384 0 0 1;
-#X connect 0 0 7 0;
-#X connect 1 0 7 3;
-#X connect 2 0 3 0;
-#X connect 3 0 4 1;
-#X connect 3 0 9 0;
-#X connect 3 0 11 0;
-#X connect 4 0 2 0;
-#X connect 5 0 4 0;
-#X connect 7 0 6 0;
-#X connect 8 0 6 1;
-#X connect 10 0 4 1;
-#X connect 11 0 0 0;
-#X connect 11 1 55 0;
-#X connect 11 2 56 0;
-#X connect 11 3 1 0;
-#X connect 11 4 8 0;
-#X connect 25 0 43 0;
-#X connect 26 0 32 0;
-#X connect 26 1 33 0;
-#X connect 26 2 34 0;
-#X connect 26 3 41 0;
-#X connect 26 4 35 0;
-#X connect 26 5 36 0;
-#X connect 26 6 37 0;
-#X connect 26 7 38 0;
-#X connect 27 0 25 0;
-#X connect 28 0 29 0;
-#X connect 28 1 30 0;
-#X connect 28 2 31 0;
-#X connect 32 0 28 0;
-#X connect 33 0 28 0;
-#X connect 34 0 28 0;
-#X connect 35 0 28 0;
-#X connect 36 0 28 0;
-#X connect 37 0 28 0;
-#X connect 38 0 28 0;
-#X connect 39 0 26 0;
-#X connect 39 1 46 0;
-#X connect 40 0 44 0;
-#X connect 41 0 28 0;
-#X connect 43 0 39 0;
-#X connect 44 0 46 1;
-#X connect 44 0 47 0;
-#X connect 45 0 46 1;
-#X connect 46 0 40 0;
-#X connect 47 0 29 1;
-#X connect 47 1 30 1;
-#X connect 47 2 31 1;
-#X connect 48 0 52 0;
-#X connect 48 1 50 0;
-#X connect 48 2 25 0;
-#X connect 49 0 4 0;
-#X connect 50 0 49 0;
-#X connect 51 0 48 0;
-#X connect 52 0 53 0;
-#X connect 54 0 48 0;
-#X connect 55 0 7 1;
-#X connect 56 0 7 2;
-#X connect 57 0 28 0;
-#X restore 179 193 pd drawImage;
-#X msg 103 203 RGBA;
-#X obj 81 126 alpha;
-#X connect 0 0 3 0;
-#X connect 1 0 0 0;
-#X connect 2 0 1 0;
-#X connect 4 0 6 0;
-#X connect 5 0 0 0;
-#X connect 6 0 15 0;
-#X connect 6 1 13 0;
-#X connect 7 0 14 0;
-#X connect 8 0 9 0;
-#X connect 9 0 2 0;
-#X connect 10 0 4 0;
-#X connect 11 0 10 0;
-#X connect 13 0 5 1;
-#X connect 14 0 5 0;
-#X connect 15 0 5 0;
-#X restore 128 188 pd createDisplay;
+#X restore 25 17 pd Dimg4test;
 #N canvas 684 193 609 466 mode4 0;
 #X obj 248 199 textfile;
 #X msg 319 49 write mask-listas.txt cr;
@@ -620,132 +363,8 @@ igual a imagem criada (com rectangulo do tamanho de X/13 e Y/7)?;
 #X connect 18 1 20 0;
 #X connect 19 0 0 0;
 #X connect 20 0 13 1;
-#X restore 119 74 pd mode4;
-#X obj 128 164 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#N canvas 440 441 755 286 videoFormat 0;
-#X obj 53 149 pix_resize 13 7;
-#X obj 188 187 pix_duotone;
-#X floatatom 198 110 5 0 0 0 - - -, f 5;
-#X msg 259 138 1 1 1;
-#X msg 259 160 0 0 0;
-#X msg 199 135 \$1 \$1 \$1;
-#X obj 177 159 pix_gray;
-#X obj 29 92 demux 0 1 2 3 4;
-#X obj 132 74 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
-#X obj 29 13 r Dimg;
-#X obj 226 21 r B;
-#X msg 226 42 1;
-#X obj 28 240 s img;
-#X msg 345 165 quality \$1;
-#X obj 367 139 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 403 221 rectangle 5.33 4, f 17;
-#X obj 435 111 r img;
-#X obj 423 143 spigot;
-#X obj 422 167 pix_texture;
-#X obj 488 139 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 390 83 visualiza real Depth image;
-#X obj 129 24 inlet videoMode;
-#X obj 592 24 r RGBimg;
-#X obj 616 247 rectangle 5.33 4, f 17;
-#X obj 617 198 spigot;
-#X obj 616 222 pix_texture;
-#X obj 682 194 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 610 47 visualiza color image;
-#X obj 682 165 inlet colorDebug;
-#X obj 409 48 inlet depthDebug;
-#X obj 603 139 pix_resize 13 7;
-#X msg 621 74 dimen 800 600;
-#X msg 639 109 dimen 13 7;
-#X msg 535 193 quality \$1;
-#X obj 557 167 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X connect 0 0 12 0;
-#X connect 1 0 12 0;
-#X connect 2 0 5 0;
-#X connect 3 0 1 2;
-#X connect 4 0 1 3;
-#X connect 5 0 1 1;
-#X connect 6 0 1 0;
-#X connect 7 0 12 0;
-#X connect 7 1 0 0;
-#X connect 7 2 6 0;
-#X connect 8 0 7 1;
-#X connect 9 0 7 0;
-#X connect 10 0 11 0;
-#X connect 11 0 8 0;
-#X connect 13 0 18 0;
-#X connect 14 0 13 0;
-#X connect 16 0 17 0;
-#X connect 17 0 18 0;
-#X connect 18 0 15 0;
-#X connect 19 0 17 1;
-#X connect 21 0 8 0;
-#X connect 22 0 30 0;
-#X connect 24 0 25 0;
-#X connect 25 0 23 0;
-#X connect 26 0 24 1;
-#X connect 28 0 26 0;
-#X connect 29 0 19 0;
-#X connect 30 0 24 0;
-#X connect 31 0 30 0;
-#X connect 32 0 30 0;
-#X connect 33 0 25 0;
-#X connect 34 0 33 0;
-#X restore 33 236 pd videoFormat;
-#X obj 116 214 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 33 213 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
-#X text 145 162 visualize image;
-#N canvas 579 77 450 300 kinect 0;
-#X text 160 53 gemhead for rgb;
-#X text 280 52 and for depth;
-#X text 167 134 rgb;
-#X msg 90 104 info;
-#X obj 88 14 r \$0-prop;
-#X obj 152 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 273 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X text 219 134 Depth;
-#X obj 221 263 s Dimg;
-#X obj 152 266 s RGBimg;
-#X text 74 85 get serial;
-#X obj 220 161 pix_crop 32 0 580 440;
-#X obj 153 111 pix_freenect 0 1 1;
-#X obj 152 73 gemhead 48;
-#X obj 273 72 gemhead 49;
-#X obj 156 223 pix_flip;
-#X obj 227 224 pix_flip;
-#X msg 74 186 horizontal;
-#X obj 55 131 r flip;
-#X obj 48 161 sel 0 1;
-#X msg 37 212 none;
-#X connect 3 0 12 0;
-#X connect 4 0 12 0;
-#X connect 5 0 13 0;
-#X connect 6 0 14 0;
-#X connect 11 0 16 0;
-#X connect 12 0 15 0;
-#X connect 12 1 11 0;
-#X connect 13 0 12 0;
-#X connect 14 0 12 1;
-#X connect 15 0 9 0;
-#X connect 16 0 8 0;
-#X connect 17 0 15 0;
-#X connect 17 0 16 0;
-#X connect 18 0 19 0;
-#X connect 19 0 20 0;
-#X connect 19 1 17 0;
-#X connect 20 0 15 0;
-#X connect 20 0 16 0;
-#X restore 33 163 pd kinect;
-#N canvas 563 108 796 424 init 0;
+#X restore 110 74 pd mode4;
+#N canvas 561 109 796 424 init 0;
 #X obj 131 15 table coorX;
 #X obj 217 15 table coorY;
 #X obj 304 15 table valD;
@@ -770,7 +389,7 @@ textCvalues.txt \; testHvalues read textHvalues.txt;
 #X text 654 39 H;
 #X obj 630 162 rgb2HCL-lut;
 #X obj 639 200 print HCL;
-#X obj 722 186 print rgb;
+#X obj 602 84 print rgb;
 #X msg 562 20 0.8 1 1;
 #X msg 714 84 0.8 0 1;
 #X msg 557 118 set \$1 \$2 \$3;
@@ -783,7 +402,7 @@ textCvalues.txt \; testHvalues read textHvalues.txt;
 valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 25 30 35 40 45 50 55 60 65 70 75 80 85 90 \; valD ylabel -1 0.5 1 1.5
 2 3 4 5 \; valD bounds 0 9 91 0 \; bdata bang \; MaxThr-r 10 \; MinThr-r
-0.01 \; general_tempo-r 500 \; NaturalDistance 1 \;, f 86;
+0.01 \; general_tempo-r 500 \; DistanceType 0 \;, f 86;
 #X connect 3 0 4 0;
 #X connect 3 0 29 0;
 #X connect 17 0 21 0;
@@ -794,7 +413,7 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X connect 24 0 19 0;
 #X connect 25 0 21 0;
 #X connect 27 1 26 0;
-#X restore 212 48 pd init;
+#X restore 203 48 pd init;
 #N canvas 152 411 450 300 gemwin 0;
 #X obj 109 219 gemwin;
 #X msg 151 182 0 \, destroy;
@@ -806,13 +425,13 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X connect 3 0 4 0;
 #X connect 4 0 2 0;
 #X connect 4 1 1 0;
-#X restore 205 74 pd gemwin;
-#X obj 284 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X restore 196 74 pd gemwin;
+#X obj 275 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 284 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 275 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 44 464 912 450 interconn 0;
-#X obj 63 263 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 63 263 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 82 138 disconnect;
 #X obj 62 219 netsend;
@@ -991,8 +610,428 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X connect 48 0 49 0;
 #X connect 50 0 41 0;
 #X connect 51 0 50 0;
-#X restore 284 67 pd interconn;
-#X obj 284 18 r onOff;
+#X restore 275 67 pd interconn;
+#X obj 275 18 r onOff;
+#N canvas 1 56 450 300 ToDo 0;
+#X obj 11 37 vradio 50 1 0 2 colorSpace empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X text 69 46 HSV;
+#X text 9 17 Color Space;
+#X text 68 102 CIE-Lch;
+#X text 142 18 debug problems for Distance Lin/Nat:;
+#X restore 203 21 pd ToDo;
+#X obj 7 145 cnv 15 400 150 empty empty adancedGUI 20 12 0 14 -233017
+-66577 0;
+#N canvas 405 155 844 360 properties 0;
+#X obj 13 66 cnv 15 140 220 empty empty empty 20 12 0 14 -204800 -66577
+0;
+#X msg 18 250 led \$1;
+#X obj 18 131 vradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144 -1
+-1 3;
+#X floatatom 18 227 5 0 0 0 - - -, f 5;
+#X msg 95 250 angle \$1;
+#X obj 95 95 vsl 15 128 -30 30 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 95 231 5 0 0 0 - - -, f 5;
+#X msg 59 29 0;
+#X text 34 145 GREEN;
+#X text 35 129 OFF;
+#X text 34 161 RED;
+#X text 34 176 YELLOW;
+#X text 34 191 BLINK_GR;
+#X text 34 205 BLINK_R_Y;
+#X obj 168 48 cnv 15 320 120 empty empty empty 20 12 0 14 -4034 -66577
+0;
+#X obj 179 85 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 179 120 5 0 0 0 - - -, f 5;
+#X obj 244 86 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
+#X floatatom 244 121 5 0 0 0 - - -, f 5;
+#X msg 179 141 rgb \$1;
+#X msg 244 142 depth \$1;
+#X text 171 48 activate/deactivate streams;
+#X text 173 62 save cpu power by just activating necessary streams!
+;
+#X obj 496 49 cnv 15 315 120 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X obj 499 88 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 499 123 5 0 0 0 - - -, f 5;
+#X msg 499 143 depth_output \$1;
+#X text 646 111 b = 0 \, a = 0;
+#X text 21 4 properties for pix_freenect;
+#X text 517 26 DEPTH OUTPUT;
+#X text 190 27 STREAMS;
+#X text 36 47 LED \, ANGLE;
+#X text 645 98 r->3 msbits \, g ->8 lsbits;
+#X text 518 101 Raw YUV (2 bytes) |;
+#X text 518 86 Raw RGBA -> 11 bit output in r&g channel;
+#X obj 168 192 cnv 15 520 120 empty empty empty 20 12 0 14 -261682
+-66577 0;
+#X obj 180 215 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X floatatom 180 264 5 0 0 0 - - -, f 5;
+#X obj 368 226 vradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 368 261 5 0 0 0 - - -, f 5;
+#X msg 180 285 depth_mode \$1;
+#X text 201 243 11bit raw;
+#X text 503 52 set depth output colorspace;
+#X text 171 195 set output formats;
+#X text 201 227 mm aligned to rgb (16 bit);
+#X text 201 213 mm unaligned (16 bit);
+#X msg 368 282 video_mode \$1;
+#X text 388 224 RGB;
+#X text 387 240 IR;
+#X obj 18 276 s \$0-prop;
+#X obj 179 166 s \$0-prop;
+#X obj 499 169 s \$0-prop;
+#X obj 180 314 s \$0-prop;
+#X obj 484 220 vradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X floatatom 484 268 5 0 0 0 - - -, f 5;
+#X msg 484 287 resolution \$1;
+#X text 504 234 MEDIUM (default);
+#X text 481 197 RGB RESOLUTION;
+#X text 504 249 HIGH (restart rgb stream!);
+#X text 504 219 LOW (not displaying correctly);
+#X msg 142 313 1;
+#X text 444 313 HIGH Resolution IR works just if depth stream is shut
+down!!;
+#X obj 143 287 r B;
+#X obj 115 34 r kin_angle;
+#X obj 56 319 s angleVal;
+#X connect 1 0 49 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 49 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 6 0 64 0;
+#X connect 7 0 5 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 19 0 50 0;
+#X connect 20 0 50 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 51 0;
+#X connect 36 0 37 0;
+#X connect 37 0 40 0;
+#X connect 38 0 39 0;
+#X connect 39 0 46 0;
+#X connect 40 0 52 0;
+#X connect 46 0 52 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 0;
+#X connect 55 0 52 0;
+#X connect 60 0 36 0;
+#X connect 62 0 60 0;
+#X connect 63 0 5 0;
+#X restore 15 203 pd properties;
+#N canvas 599 168 374 528 createDisplay 0;
+#X obj 54 419 pix_texture;
+#X msg 72 391 quality \$1;
+#X obj 72 372 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 54 444 rectangle 5.33 4;
+#X obj 93 57 gemhead;
+#X obj 54 250 pix_set 13 7;
+#X obj 93 81 t a b;
+#X obj 103 179 r B;
+#X obj 91 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 91 6 inlet;
+#X text 134 9 create a depth image \; with D values;
+#N canvas 1 125 1094 642 drawImage 0;
+#X obj 260 288 tabread valRed;
+#X obj 572 292 tabread valD, f 14;
+#X obj 362 126 + 1;
+#X obj 360 158 mod 91;
+#X obj 361 104 f -1;
+#X obj 354 41 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 269 463 array set drawImage;
+#X obj 267 345 pack f f f f;
+#X obj 370 379 * 4;
+#X floatatom 226 162 5 0 0 0 - - -, f 5;
+#X msg 403 49 -1;
+#X obj 279 245 t f f f f f;
+#X msg 926 144 1 1 1;
+#X text 1023 145 white;
+#X text 1021 114 black;
+#X text 1026 172 gray;
+#X msg 926 115 0 0 0;
+#X text 1018 234 yellow;
+#X msg 926 202 1 0 0;
+#X text 1027 203 red;
+#X msg 926 231 1 1 0;
+#X msg 926 260 0 1 0;
+#X msg 926 289 0 0 1;
+#X text 1021 258 green;
+#X text 1032 287 blue;
+#X obj 706 89 tabdump ColorTypeAll;
+#X obj 682 186 sel 0 1 2 3 4 5 6 7;
+#X obj 727 53 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 825 445 unpack f f f;
+#X obj 752 487 tabwrite valRed;
+#X obj 856 487 tabwrite valGreen;
+#X obj 969 487 tabwrite valBlue;
+#X msg 630 422 0 0 0;
+#X msg 653 401 0 0 0;
+#X msg 678 376 1 1 1;
+#X msg 726 321 1 0 0;
+#X msg 750 294 1 1 0;
+#X msg 758 272 0 1 0;
+#X msg 773 236 0 0 1;
+#X obj 723 149 t a b;
+#X obj 850 186 + 1;
+#X msg 712 351 0.5 0.5 0.5;
+#X msg 926 173 0.5 0.5 0.5;
+#X obj 709 117 list-drip;
+#X obj 848 218 mod 91;
+#X msg 859 123 -1;
+#X obj 849 164 f -1;
+#X obj 841 275 t f f f;
+#X obj 584 31 t b b b;
+#X obj 589 137 until;
+#X msg 592 98 91;
+#X obj 550 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 69 435 tabdump drawImage;
+#X obj 73 481 outlet;
+#X obj 584 5 inlet;
+#X obj 356 289 tabread valGreen;
+#X obj 466 291 tabread valBlue;
+#X msg 858 384 0 0 1;
+#X connect 0 0 7 0;
+#X connect 1 0 7 3;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 3 0 9 0;
+#X connect 3 0 11 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 1;
+#X connect 10 0 4 1;
+#X connect 11 0 0 0;
+#X connect 11 1 55 0;
+#X connect 11 2 56 0;
+#X connect 11 3 1 0;
+#X connect 11 4 8 0;
+#X connect 25 0 43 0;
+#X connect 26 0 32 0;
+#X connect 26 1 33 0;
+#X connect 26 2 34 0;
+#X connect 26 3 41 0;
+#X connect 26 4 35 0;
+#X connect 26 5 36 0;
+#X connect 26 6 37 0;
+#X connect 26 7 38 0;
+#X connect 27 0 25 0;
+#X connect 28 0 29 0;
+#X connect 28 1 30 0;
+#X connect 28 2 31 0;
+#X connect 32 0 28 0;
+#X connect 33 0 28 0;
+#X connect 34 0 28 0;
+#X connect 35 0 28 0;
+#X connect 36 0 28 0;
+#X connect 37 0 28 0;
+#X connect 38 0 28 0;
+#X connect 39 0 26 0;
+#X connect 39 1 46 0;
+#X connect 40 0 44 0;
+#X connect 41 0 28 0;
+#X connect 43 0 39 0;
+#X connect 44 0 46 1;
+#X connect 44 0 47 0;
+#X connect 45 0 46 1;
+#X connect 46 0 40 0;
+#X connect 47 0 29 1;
+#X connect 47 1 30 1;
+#X connect 47 2 31 1;
+#X connect 48 0 52 0;
+#X connect 48 1 50 0;
+#X connect 48 2 25 0;
+#X connect 49 0 4 0;
+#X connect 50 0 49 0;
+#X connect 51 0 48 0;
+#X connect 52 0 53 0;
+#X connect 54 0 48 0;
+#X connect 55 0 7 1;
+#X connect 56 0 7 2;
+#X connect 57 0 28 0;
+#X restore 177 172 pd drawImage;
+#X msg 103 203 RGBA;
+#X obj 81 126 alpha;
+#X obj 86 351 r blurOnOff;
+#X obj 53 327 rotateXYZ 0 180 0;
+#X msg 177 285 0;
+#X msg 217 287 180;
+#X obj 202 254 sel 0 1;
+#X obj 203 230 r flipImage;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 15 0;
+#X connect 6 0 13 0;
+#X connect 6 1 11 0;
+#X connect 7 0 12 0;
+#X connect 8 0 4 0;
+#X connect 9 0 8 0;
+#X connect 11 0 5 1;
+#X connect 12 0 5 0;
+#X connect 13 0 5 0;
+#X connect 14 0 2 0;
+#X connect 15 0 0 0;
+#X connect 16 0 15 2;
+#X connect 17 0 15 2;
+#X connect 18 0 16 0;
+#X connect 18 1 17 0;
+#X connect 19 0 18 0;
+#X restore 110 203 pd createDisplay;
+#X obj 110 179 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 517 92 823 285 videoFormat 0;
+#X obj 278 207 pix_resize 13 7;
+#X obj 255 21 r Dimg;
+#X obj 463 13 r B;
+#X obj 254 248 s img;
+#X msg 29 100 quality \$1;
+#X obj 29 80 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 75 235 rectangle 5.33 4, f 17;
+#X obj 76 142 r img;
+#X obj 76 173 spigot;
+#X obj 75 197 pix_texture;
+#X obj 123 146 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 343 14 inlet videoMode;
+#X obj 577 8 r RGBimg;
+#X obj 616 247 rectangle 5.33 4, f 17;
+#X obj 616 196 spigot;
+#X obj 616 222 pix_texture;
+#X obj 699 10 inlet colorDebug;
+#X obj 577 148 pix_resize 13 7;
+#X msg 714 87 dimen 800 600;
+#X msg 752 108 dimen 13 7;
+#X msg 539 196 quality \$1;
+#X obj 539 178 tgl 15 0 empty qual empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 542 25 visualize color image;
+#X text 53 46 visualize real Depth image;
+#X obj 699 34 sel 0 1 2;
+#X msg 699 168 0;
+#X obj 727 199 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 745 170 1;
+#X obj 752 60 t b b;
+#X obj 714 63 t b b;
+#X msg 143 109 0;
+#X obj 312 69 t b b;
+#X msg 185 110 1;
+#X obj 373 73 t b b;
+#X obj 322 42 sel 0 1 2;
+#X msg 327 116 0;
+#X msg 368 120 1;
+#X obj 255 168 demux 0 1;
+#X msg 463 34 0;
+#X connect 0 0 3 0;
+#X connect 1 0 37 0;
+#X connect 2 0 38 0;
+#X connect 4 0 9 0;
+#X connect 5 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 0;
+#X connect 10 0 8 1;
+#X connect 11 0 34 0;
+#X connect 12 0 17 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
+#X connect 16 0 24 0;
+#X connect 17 0 14 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 15 0;
+#X connect 21 0 20 0;
+#X connect 24 0 25 0;
+#X connect 24 1 29 0;
+#X connect 24 2 28 0;
+#X connect 25 0 26 0;
+#X connect 26 0 14 1;
+#X connect 27 0 26 0;
+#X connect 28 0 19 0;
+#X connect 28 1 27 0;
+#X connect 29 0 18 0;
+#X connect 29 1 27 0;
+#X connect 30 0 10 0;
+#X connect 31 0 32 0;
+#X connect 31 1 35 0;
+#X connect 32 0 10 0;
+#X connect 33 0 32 0;
+#X connect 33 1 36 0;
+#X connect 34 0 30 0;
+#X connect 34 1 31 0;
+#X connect 34 2 33 0;
+#X connect 35 0 37 1;
+#X connect 36 0 37 1;
+#X connect 37 0 3 0;
+#X connect 37 1 0 0;
+#X connect 38 0 34 0;
+#X restore 15 271 pd videoFormat;
+#X obj 16 248 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#N canvas 265 106 447 357 kinect 0;
+#X text 160 53 gemhead for rgb;
+#X text 280 52 and for depth;
+#X text 167 134 rgb;
+#X msg 90 104 info;
+#X obj 88 14 r \$0-prop;
+#X obj 152 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 273 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 219 134 Depth;
+#X obj 224 301 s Dimg;
+#X obj 153 301 s RGBimg;
+#X text 74 85 get serial;
+#X obj 224 161 pix_crop 32 0 580 440;
+#X obj 153 111 pix_freenect 0 1 1;
+#X obj 152 73 gemhead 48;
+#X obj 273 72 gemhead 49;
+#X obj 153 269 pix_flip;
+#X obj 224 270 pix_flip;
+#X msg 74 186 horizontal;
+#X obj 55 131 r flip;
+#X obj 48 161 sel 0 1;
+#X msg 37 212 none;
+#X connect 3 0 12 0;
+#X connect 4 0 12 0;
+#X connect 5 0 13 0;
+#X connect 6 0 14 0;
+#X connect 11 0 16 0;
+#X connect 12 0 15 0;
+#X connect 12 1 11 0;
+#X connect 13 0 12 0;
+#X connect 14 0 12 1;
+#X connect 15 0 9 0;
+#X connect 16 0 8 0;
+#X connect 17 0 15 0;
+#X connect 17 0 16 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 19 1 17 0;
+#X connect 20 0 15 0;
+#X connect 20 0 16 0;
+#X restore 15 178 pd kinect;
 #N canvas 109 250 715 433 viewValues 0;
 #X obj 125 38 r general_tempo;
 #X obj 139 71 s general_tempoView;
@@ -1046,34 +1085,33 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X connect 21 0 19 0;
 #X connect 21 0 20 0;
 #X connect 26 0 21 0;
-#X restore 266 237 pd viewValues;
-#X text 135 215 depthDebug;
-#X obj 136 239 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 260 254 pd viewValues;
+#X text 14 231 depthDebug;
+#X text 92 232 colorDebug;
+#X obj 260 175 s flip;
+#X obj 260 152 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X text 156 239 colorDebug;
-#X obj 280 183 s flip;
-#X obj 279 158 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 261 207 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#N canvas 1 54 450 300 ToDo 0;
-#X obj 72 118 vradio 50 1 0 2 colorSpace empty empty 0 -8 0 10 -262144
--1 -1 0;
-#X text 134 131 HSV;
-#X text 74 102 Color Space;
-#X text 133 187 CIE-Lch;
-#X restore 212 21 pd ToDo;
-#X connect 3 0 4 0;
-#X connect 8 0 6 0;
-#X connect 10 0 9 1;
-#X connect 11 0 9 0;
-#X connect 16 0 18 0;
+#X obj 261 230 s flipImage;
+#X obj 96 248 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X text 127 177 visualize;
+#X text 276 154 flip1 (audio&image);
+#X text 280 206 flip2 (only image);
+#X connect 2 0 3 0;
+#X connect 8 0 10 0;
+#X connect 10 0 9 0;
+#X connect 11 0 8 0;
+#X connect 16 0 15 0;
 #X connect 18 0 17 0;
-#X connect 19 0 16 0;
-#X connect 22 0 9 2;
-#X connect 25 0 24 0;
+#X connect 24 0 23 0;
+#X connect 25 0 26 0;
+#X connect 27 0 17 1;
 #X restore 26 132 pd stuff;
-#X obj 350 210 vsl 50 150 0 1 0 0 RevLev RevLev-set Reverb 0 -9 0 10
+#X obj 347 216 vsl 50 150 0 1 0 0 RevLev RevLev-set Reverb 0 -9 0 10
 -262144 -1 -1 0 1;
-#X obj 25 21 tgl 50 0 onOff empty empty 17 7 0 10 -260097 -1 -1 1 1
+#X obj 25 21 tgl 50 0 onOff empty empty 17 7 0 10 -260097 -1 -1 0 1
 ;
 #X text 88 35 Synestheatre On;
 #X obj 160 231 vsl 20 128 -30 30 0 0 kin_angle empty empty 0 -9 0 10
@@ -1083,7 +1121,7 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 0 10 -262144 -99865 -1 0 256;
 #X text 159 189 kinect angle;
 #X obj 472 23 nbx 5 14 -1e+37 1e+37 0 0 empty general_tempoView empty
-0 -8 0 10 -262144 -128992 -262144 1681.79 256;
+0 -8 0 10 -262144 -128992 -262144 500 256;
 #X obj 253 67 hsl 200 30 0 1 0 0 Offset-01 Offset-01-r offset(%) 70
 16 0 10 -262144 -1 -99865 0 1;
 #X obj 472 69 nbx 5 14 -1e+37 1e+37 0 0 empty offsetView empty 0 -8
@@ -1093,24 +1131,24 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X obj 16 349 nbx 5 14 -1e+37 1e+37 0 0 empty offsetView empty 0 -8
 0 10 -262144 -99865 -1 0 256;
 #X text 187 208 horiz;
-#N canvas 11 72 484 306 ColorOffsets 1;
-#X obj 16 21 vsl 40 250 0 1 0 0 Offset-1 Offset-1-r empty 0 -9 0 10
+#N canvas 7 74 484 306 ColorOffsets 0;
+#X obj 13 21 vsl 40 250 0 1 0 0 Offset-1 Offset-1-r empty 0 -9 0 10
 -1 -262144 -1 0 1;
-#X obj 69 21 vsl 40 250 0 1 0 0 Offset-2 Offset-2-r empty 0 -9 0 10
--262144 -1 -1 3112 1;
-#X obj 123 21 vsl 40 250 0 1 0 0 Offset-3 Offset-3-r empty 0 -9 0 10
--128992 -1 -1 6225 1;
-#X obj 177 21 vsl 40 250 0 1 0 0 Offset-4 Offset-4-r empty 0 -9 0 10
--258113 -1 -1 9337 1;
-#X obj 230 21 vsl 40 250 0 1 0 0 Offset-5 Offset-5-r empty 0 -9 0 10
--257985 -1 -1 12450 1;
-#X obj 284 21 vsl 40 250 0 1 0 0 Offset-6 Offset-6-r empty 0 -9 0 10
--4034 -1 -1 15562 1;
-#X obj 337 21 vsl 40 250 0 1 0 0 Offset-7 Offset-7-r empty 0 -9 0 10
--4160 -262144 -1 18675 1;
-#X obj 399 20 bng 60 250 50 0 offset0 empty set_to_0 5 28 0 10 -262144
+#X obj 66 21 vsl 40 250 0 1 0 0 Offset-2 Offset-2-r empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 120 21 vsl 40 250 0 1 0 0 Offset-3 Offset-3-r empty 0 -9 0 10
+-128992 -1 -1 0 1;
+#X obj 174 21 vsl 40 250 0 1 0 0 Offset-4 Offset-4-r empty 0 -9 0 10
+-258113 -1 -1 0 1;
+#X obj 227 21 vsl 40 250 0 1 0 0 Offset-5 Offset-5-r empty 0 -9 0 10
+-257985 -1 -1 0 1;
+#X obj 281 21 vsl 40 250 0 1 0 0 Offset-6 Offset-6-r empty 0 -9 0 10
+-4034 -1 -1 0 1;
+#X obj 334 21 vsl 40 250 0 1 0 0 Offset-7 Offset-7-r empty 0 -9 0 10
+-4160 -262144 -1 0 1;
+#X obj 396 20 bng 60 250 50 0 offset0 empty set_to_0 5 28 0 10 -262144
 -1 -1;
-#X obj 399 115 bng 60 250 50 0 stair_offset empty stair 15 28 0 10
+#X obj 396 115 bng 60 250 50 0 stair_offset empty stair 15 28 0 10
 -262144 -1 -1;
 #N canvas 951 197 284 300 set_offset 0;
 #X msg 42 102 \; Offset-1-r 0 \; Offset-2-r 0 \; Offset-3-r 0 \; Offset-4-r
@@ -1122,13 +1160,22 @@ valD resize 91 \; valD xticks 0 5 1 \; valD xlabel -0.1 0 5 10 15 20
 #X obj 150 35 r stair_offset;
 #X connect 1 0 0 0;
 #X connect 3 0 2 0;
-#X restore 388 254 pd set_offset;
-#X restore 417 240 pd ColorOffsets;
-#X obj 409 346 tgl 15 0 NaturalDistance empty empty 17 7 0 10 -262144
--1 -1 1 1;
-#X text 428 347 Distance Lin/Nat;
+#X restore 385 254 pd set_offset;
+#X restore 435 217 pd ColorOffsets;
+#X obj 433 324 tgl 15 0 DistanceType empty empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X text 456 325 Distance Lin/Nat;
+#N canvas 168 175 230 250 Natural 0;
+#X obj 34 63 vradio 15 1 0 3 NaturalDistanceType empty empty 0 -8 0
+10 -262144 -1 -1 0;
+#X text 60 63 1/$f1*$f1;
+#X restore 432 349 pd Natural Distance Types;
+#X floatatom 270 371 5 0 0 0 - - -, f 5;
+#X obj 434 247 tgl 15 0 blurOnOff empty blur_display 17 7 0 10 -262144
+-1 -1 0 1;
 #X connect 4 0 25 0;
 #X connect 5 0 4 0;
 #X connect 6 0 26 0;
 #X connect 7 0 6 0;
+#X connect 13 0 32 0;
 #X connect 19 0 18 0;

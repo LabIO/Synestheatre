@@ -1,4 +1,4 @@
-#N canvas 73 71 977 639 10;
+#N canvas 71 100 839 611 10;
 #X obj 352 184 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 352 160 metro 500;
@@ -29,17 +29,17 @@
 #X obj 59 554 throw~ rev-l;
 #X obj 159 556 throw~ rev-r;
 #X obj 70 356 r D-\$1;
-#X obj 666 156 r D-\$1;
+#X obj 657 156 r D-\$1;
 #X obj 403 46 r D-\$1;
 #X obj 157 499 *~;
 #X obj 57 503 *~;
 #X obj 212 459 lop~ 100;
 #X obj 212 435 r RevLev;
 #X obj 499 445 vline~;
-#X msg 697 382 \$1 5;
-#X obj 706 275 pack 0 f;
-#X obj 753 212 r \$1-SampSize;
-#X obj 747 249 / 44.1;
+#X msg 684 375 \$1 5;
+#X obj 672 465 pack 0 f;
+#X obj 717 413 r \$1-SampSize;
+#X obj 717 439 / 44.1;
 #X obj 352 281 t b b;
 #N canvas 102 111 311 443 tables 0;
 #X obj 89 14 table s\$1_1-r;
@@ -227,7 +227,7 @@
 #X connect 31 0 28 0;
 #X connect 32 0 30 0;
 #X restore 52 33 pd loadSamples;
-#X msg 639 325 0;
+#X msg 657 322 0;
 #N canvas 802 155 450 300 SetColorOffset 0;
 #X restore 74 234 pd SetColorOffset;
 #X obj 468 156 r Color-\$1;
