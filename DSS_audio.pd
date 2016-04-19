@@ -1,20 +1,20 @@
-#N canvas 793 99 474 329 10;
-#X obj 152 24 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#N canvas 777 93 474 329 10;
+#X obj 143 24 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 152 44 \; pd dsp \$1;
-#X obj 118 276 dac~;
-#X floatatom 247 189 5 0 0 0 - - -, f 5;
-#X obj 51 201 catch~ som-l;
-#X obj 138 201 catch~ som-r;
-#X obj 247 101 vsl 15 78 0 5 0 0 empty volume Volume 0 -9 0 10 -262144
+#X msg 143 44 \; pd dsp \$1;
+#X obj 109 276 dac~;
+#X floatatom 238 189 5 0 0 0 - - -, f 5;
+#X obj 42 201 catch~ som-l;
+#X obj 129 201 catch~ som-r;
+#X obj 238 101 vsl 15 78 0 5 0 0 empty volume Volume 0 -9 0 10 -262144
 -1 -1 0 1;
-#X obj 247 212 lop~ 0.5;
-#X obj 51 240 *~;
-#X obj 138 240 *~;
-#X obj 302 51 s sample_bank-r;
-#X obj 302 26 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+#X obj 238 212 lop~ 0.5;
+#X obj 42 240 *~;
+#X obj 129 240 *~;
+#X obj 293 51 s sample_bank-r;
+#X obj 293 26 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
 -1 0;
-#X text 300 8 0 samples 1 test samples;
+#X text 291 8 0 samples 1 test samples;
 #N canvas 193 182 585 528 play_mode 0;
 #X obj 65 394 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -105,8 +105,8 @@ to central pixel depth \; 4 pingpong mode;
 #X connect 36 0 39 0;
 #X connect 38 0 1 0;
 #X connect 39 0 7 1;
-#X restore 190 13 pd play_mode;
-#N canvas 513 102 624 621 interconn 0;
+#X restore 181 13 pd play_mode;
+#N canvas 493 112 624 621 interconn 0;
 #X obj 61 24 netreceive 2000;
 #X obj 31 527 unpack f f;
 #X obj 31 576 s;
@@ -137,13 +137,15 @@ to central pixel depth \; 4 pingpong mode;
 #X obj 287 171 unpack f f;
 #X obj 302 198 makefilename Color-%d;
 #X obj 287 219 s;
-#X obj 319 144 s Offset;
 #X text 213 428 min and max thr not used;
-#X obj 31 65 route /Dval_pixN /go /play_mode /general_tempo /maxThr
-/minThr /vol /RevLev /ColorType_pixN /Offset /ColorOffsetList;
-#X obj 426 148 tabwrite ColorOffsetValues;
+#X obj 426 158 tabwrite ColorOffsetValues;
 #X text 510 99 list Val \, Index;
-#X connect 0 0 31 0;
+#X obj 31 65 route /Dval_pixN /go /play_mode /general_tempo /maxThr
+/minThr /vol /RevLev /ColorType_pixN /Offset /ColorOffsetList /flip
+;
+#X obj 457 125 s flip;
+#X obj 325 145 s Offset;
+#X connect 0 0 32 0;
 #X connect 0 1 21 0;
 #X connect 1 0 2 0;
 #X connect 1 1 4 0;
@@ -164,23 +166,24 @@ to central pixel depth \; 4 pingpong mode;
 #X connect 26 0 28 0;
 #X connect 26 1 27 0;
 #X connect 27 0 28 1;
-#X connect 31 0 1 0;
-#X connect 31 1 3 0;
-#X connect 31 2 14 0;
-#X connect 31 3 15 0;
-#X connect 31 4 16 0;
-#X connect 31 5 17 0;
-#X connect 31 6 19 0;
-#X connect 31 7 25 0;
-#X connect 31 8 26 0;
-#X connect 31 9 29 0;
-#X connect 31 10 32 0;
-#X restore 38 11 pd interconn;
-#X text 289 283 Mick & X LabIO 2015;
-#X obj 39 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X connect 32 0 1 0;
+#X connect 32 1 3 0;
+#X connect 32 2 14 0;
+#X connect 32 3 15 0;
+#X connect 32 4 16 0;
+#X connect 32 5 17 0;
+#X connect 32 6 19 0;
+#X connect 32 7 25 0;
+#X connect 32 8 26 0;
+#X connect 32 9 34 0;
+#X connect 32 10 30 0;
+#X connect 32 11 33 0;
+#X restore 29 11 pd interconn;
+#X text 280 283 Mick & X LabIO 2015;
+#X obj 30 33 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X text 58 32 connected;
-#N canvas 455 137 671 482 REVERB 0;
+#X text 49 32 connected;
+#N canvas 453 138 671 482 REVERB 0;
 #X obj 88 378 freeverb~;
 #X msg 16 40 roomsize \$1;
 #X msg 16 62 damping \$1;
@@ -213,8 +216,8 @@ to central pixel depth \; 4 pingpong mode;
 #X connect 15 0 0 0;
 #X connect 16 0 0 1;
 #X connect 20 0 19 0;
-#X restore 370 84 pd REVERB;
-#X obj 38 54 playD_all;
+#X restore 353 213 pd REVERB;
+#X obj 29 54 playD_all;
 #N canvas 1 169 475 187 init 0;
 #X floatatom 32 79 5 0 0 0 - - -, f 5;
 #X floatatom 155 79 5 0 0 0 - - -, f 5;
@@ -231,11 +234,11 @@ to central pixel depth \; 4 pingpong mode;
 #X connect 5 0 1 0;
 #X connect 6 0 4 0;
 #X connect 6 0 5 0;
-#X restore 376 251 pd init;
+#X restore 30 98 pd init;
 #X connect 0 0 1 0;
 #X connect 3 0 7 0;
-#X connect 4 0 8 0;
-#X connect 5 0 9 0;
+#X connect 4 0 9 0;
+#X connect 5 0 8 0;
 #X connect 6 0 3 0;
 #X connect 7 0 8 1;
 #X connect 7 0 9 1;

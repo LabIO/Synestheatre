@@ -1,0 +1,81 @@
+test consisted in: 
+1) explain colors are different instruments, volume (and tempo in mode2) are distance/proximity, pitch vertical positioning
+2) still objects: first detect how many objects in scene (left/right, high/low, close/far)
+3) moving objects: detect their movement 
+repeat the test for mode1
+
+setup:
+- threshold min 0m max 3m
+- between 2 to 4min each mode
+
+Filipa
+
+(mode1 general tempo 1.5sec color offset 0)
+
+able to localize location of both objects, follow the movement, when I was low she felt it was faraway
+
+(mode2 color offset 70msec)
+able to localize with more fast response, also height
+
+aesthetic impression: gives a kind of mantric state, the second mode is more appreciated
+
+
+----
+Francisco
+
+mode2 then mode1
+
+
+low vertical resolution but perceptible
+distance perception low
+sounds percepted are two clavier and low keyboard,  sometimes like a rainbow from left to right (is it for the offset of horizontal dispplacement or colors?) 
+
+the space perception is like a narrow place, all sounds are very close to the user
+
+-----
+Laura
+
+felt more presence and location in mode2
+she needed to move her arms to help her communicating
+
+----------
+joao
+
+mode1 more challenging and enjoyable, also felt the need to move arms to decode and communicate the positioning
+
+mode2 more informative because more time to think, allows more detail in "observing" a scene, more introspective
+
+when I was very close to the camera and moving up and down, it  seemed to him that the sound were coming from behind his neck (me standing) and (me bent down) they were coming from inside his head. "the sound were coming from inside my head..."
+
+the experience was pleasing and challenging
+
+----
+andre
+
+mode1 better to capture movement, able to to detect two or three objects
+when close sounds seemed to pass behind him, when close to the camera very close almost "inside"!
+
+sound is a bit agressive but acceptable to be handled during the period of the test
+
+
+----
+naccir
+
+indian tabla player, when asked how many objects were in the scene he said "eight!", while a an orange bagpack was hanging in front of the camera 2m away from the comfortable sofa he was sitting on
+
+at first he got confused and surprised, then he briefly started perceiving clusters of sound coming from specific location in space around him, with his eyes closed
+
+he got very enthusiastic and surprised by the way the sounds appeared to come from behind him, "a little bit down and on the right" pointing with his arm and fingers to the floor
+
+in mode2, the second part of the test, he got shoked by the quantity of sound coming towards him, like most of the people participating to the test. Then he relaxed and started enjoying the music while I was changing the position of the two colored objects in the 3 by 4 m² room. 
+When the two neon lights were off the room sounded empty, made no sound. Even with lights turned on, if no object was put in the scene. Then when an object was entering the sceen the reaction of the listener, who did not know what to expect (I just explaind them what the they should do in the test not why to avoid biasing of their judgements) was immediate and full of surprise. People got overwhelmed and a bit scared at first, then engaged and enjoying to be in this kind of challenge. 
+GAME This brought me to think about different uses for it, for example a have a game where, like you suggested two persons are playing hide and seek, the one that is able to spot/hit the opponent in the shorter time wins. 
+
+RELAX INSTALLATION Indian guy suggested to put in high class events and parties with well dressed sophisticated decoration and persoonnel and offer a moment of relax in a different way, just by pretending being blind and appreciate the what's in front of you through a hacked kinect of 40£ and a laptop running xubuntu, and of course Pd 
+
+- people felt challenging expressing the position of objects with eyes closed and needed to move their arms and hands to communicate what they were perceiveing
+- the soundscape envolve the listener, which senses the sounds coming from very close to his head, behind them, above and under. the hrtf associated with pitch is effective in giving the listener to be completely surrounded by sound.
+- cluster in space of colors/sounds after some training were easily perceived as objects can define a single object
+
+the horizontal offset from left to right is misleading: even if the intnetion is good (avoid time locking of different objects) it interferes with the other parameter that we need to make people understand, the location. This effect made people feel like there was some object moving from left to right, like "rainbows of sound" (Joana)
+

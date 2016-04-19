@@ -1,4 +1,4 @@
-#N canvas 71 100 839 611 10;
+#N canvas 145 156 839 611 10;
 #X obj 352 184 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 352 160 metro 500;
@@ -8,7 +8,7 @@
 #X obj 403 135 + 100;
 #X obj 403 91 * 100;
 #X obj 483 480 *~;
-#X obj 657 245 sel 0;
+#X obj 656 295 sel 0;
 #X obj 430 70 r TempoRange;
 #X obj 430 113 r Tempomin;
 #X obj 281 159 r GoOnce;
@@ -29,7 +29,7 @@
 #X obj 59 554 throw~ rev-l;
 #X obj 159 556 throw~ rev-r;
 #X obj 70 356 r D-\$1;
-#X obj 657 156 r D-\$1;
+#X obj 654 258 r D-\$1;
 #X obj 403 46 r D-\$1;
 #X obj 157 499 *~;
 #X obj 57 503 *~;
@@ -57,7 +57,7 @@
 #X obj 87 374 table s\$1_7-r;
 #X obj 87 401 table s\$1_7-l;
 #X restore 49 151 pd tables;
-#N canvas 183 241 1072 364 SetColorSample 0;
+#N canvas 244 311 1072 364 SetColorSample 0;
 #X obj 389 12 r Color-\$1;
 #X floatatom 36 115 5 0 0 0 - - -, f 5;
 #X obj 375 73 sel 0 1 2 3 4 5 6 7;
@@ -102,9 +102,9 @@
 #X connect 2 2 6 0;
 #X connect 2 3 19 0;
 #X connect 2 4 20 0;
-#X connect 2 6 21 0;
-#X connect 2 7 22 0;
-#X connect 2 8 23 0;
+#X connect 2 5 21 0;
+#X connect 2 6 22 0;
+#X connect 2 7 23 0;
 #X connect 3 0 4 0;
 #X connect 3 0 5 0;
 #X connect 4 0 24 0;
@@ -136,7 +136,7 @@
 #X restore 53 109 pd SetColorSample;
 #X obj 160 331 r \$1-SetSample-r;
 #X obj 343 337 r \$1-SetSample-l;
-#N canvas 1 54 450 300 InitSamples 0;
+#N canvas 1 56 450 300 InitSamples 0;
 #X obj 52 239 soundfiler;
 #X obj 52 182 pack s s s;
 #X msg 53 210 read -resize \$1 \$2 \$3;
@@ -144,6 +144,7 @@
 #X obj 50 264 s \$1-SampSize;
 #X obj 97 149 makefilename s%d_1-l;
 #X obj 233 148 makefilename s%d_1-r;
+#X text 196 48 this is not activated \, correct?;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
@@ -152,9 +153,9 @@
 #X connect 6 0 1 2;
 #X restore 50 72 pd InitSamples;
 #X obj 352 258 delay 0;
-#X obj 391 183 r Offset;
-#X obj 391 206 * \$2;
-#N canvas 415 212 934 626 loadSamples 0;
+#X obj 538 13 r Offset;
+#X obj 501 144 * \$2;
+#N canvas 411 141 934 626 loadSamples 0;
 #X obj 267 535 soundfiler;
 #X obj 267 478 pack s s s;
 #X msg 268 506 read -resize \$1 \$2 \$3;
@@ -228,12 +229,20 @@
 #X connect 32 0 30 0;
 #X restore 52 33 pd loadSamples;
 #X msg 657 322 0;
-#N canvas 802 155 450 300 SetColorOffset 0;
+#N canvas 800 156 450 300 SetColorOffset 0;
 #X restore 74 234 pd SetColorOffset;
-#X obj 468 156 r Color-\$1;
-#X obj 468 183 tabread ColorOffsetValues;
-#X obj 456 241 +;
-#X obj 468 209 t b f;
+#X obj 667 151 r Color-\$1;
+#X obj 667 178 tabread ColorOffsetValues;
+#X obj 577 228 +;
+#X obj 667 204 t b f;
+#X obj 615 15 r flip;
+#X obj 540 88 demux . .;
+#X obj 549 150 expr $f1*(13-$f2);
+#X obj 626 124 \$2;
+#X obj 628 101 loadbang;
+#X text 659 11 flipping the image inverts the offset sweep;
+#X obj 539 43 f;
+#X obj 601 55 t b f;
 #X connect 0 0 45 0;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
@@ -279,7 +288,7 @@
 #X connect 42 0 14 0;
 #X connect 43 0 12 0;
 #X connect 45 0 39 0;
-#X connect 46 0 47 0;
+#X connect 46 0 61 0;
 #X connect 47 0 53 0;
 #X connect 49 0 35 0;
 #X connect 51 0 52 0;
@@ -287,3 +296,12 @@
 #X connect 53 0 45 1;
 #X connect 54 0 53 0;
 #X connect 54 1 53 1;
+#X connect 55 0 62 0;
+#X connect 56 0 47 0;
+#X connect 56 1 57 0;
+#X connect 57 0 53 0;
+#X connect 58 0 57 1;
+#X connect 59 0 58 0;
+#X connect 61 0 56 0;
+#X connect 62 0 61 0;
+#X connect 62 1 56 1;
